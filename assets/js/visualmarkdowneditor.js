@@ -125,7 +125,7 @@ var VisualMarkdownEditor = function ($, field, $element, options) {
         },
         unorderedList: function () {
             self.toggleBefore('*', true);
-        },
+		},
         link: function () {
             if (self.options.kirbytext) {
                 self.insertAround('(link: http:// text: ', ')');
@@ -134,6 +134,11 @@ var VisualMarkdownEditor = function ($, field, $element, options) {
                 self.insertAround('[', '](http://)');
             }
         },
+		button: function () {
+            if (self.options.kirbytext) {
+                self.insertAround('(button: http:// text: ', ' primary: 0, compact: 0)');
+            }
+		},
         email: function () {
             if (self.options.kirbytext) {
                 self.insertAround('(email: user@example.com text: ', ')');
@@ -214,6 +219,9 @@ var VisualMarkdownEditor = function ($, field, $element, options) {
     }, {
         action: 'link',
         className: 'fa fa-link'
+    }, {
+        action: 'button',
+        className: 'fa fa-square-o'
     }, {
         action: 'email',
         className: 'fa fa-envelope'
